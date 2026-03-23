@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NavigationBetweenScreensTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    LoginScreen( )
+                    LoginScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

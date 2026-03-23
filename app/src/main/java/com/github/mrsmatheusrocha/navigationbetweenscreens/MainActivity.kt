@@ -7,10 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -34,16 +31,16 @@ class MainActivity : ComponentActivity() {
                         startDestination = "login",
                     ) {
                         composable(route = "login") {
-                            LoginScreen(modifier = Modifier.padding(innerPadding))
+                            LoginScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
                         composable(route = "menu") {
-                            MenuScreen(modifier = Modifier.padding(innerPadding))
+                            MenuScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
                         composable(route = "pedidos") {
-                            PedidosScreen(modifier = Modifier.padding(innerPadding))
+                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
                         composable(route = "perfil") {
-                            PerfilScreen(modifier = Modifier.padding(innerPadding))
+                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController)
                         }
                     }
                 }

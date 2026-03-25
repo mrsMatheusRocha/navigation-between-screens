@@ -43,11 +43,22 @@ class MainActivity : ComponentActivity() {
                                 defaultValue = "Cliente Genérico"
                             })
                         ) {
-                            PedidosScreen(modifier = Modifier.padding(innerPadding), navController)
+                            PedidosScreen(
+                                modifier = Modifier.padding(innerPadding),
+                                navController,
+                                it.arguments?.getString("cliente")
+                            )
                         }
-                        composable(route = "perfil/{nome}") {
+                        composable(
+                            route = "perfil/{nome}/{idade}",
+                            arguments = listOf(
+                                navArgument("nome") { type = NavType.StringType },
+                                navArgument("idade") { type = NavType.IntType }
+                            )
+                        ) {
                             val nome: String = it.arguments?.getString("Nome", "Usuário Genérico")
-                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController, nome!!)
+                            val idade: Int? = it.arguments?.getInt("idade", 0)
+                            PerfilScreen(modifier = Modifier.padding(innerPadding), navController, nome!!, idade!!)
                         }
                     }
                 }

@@ -1,59 +1,48 @@
 # 🚀 Navegação entre Telas com Jetpack Compose
 
 Bem-vindo ao repositório **navigation-between-screens**!  
-Este projeto exemplifica a navegação dinâmica entre múltiplas telas utilizando **Jetpack Compose** no Android, focando em evolução incremental do código, organização e explicações claras sobre cada implementação, conforme solicitado na avaliação FIAP.
+Este projeto demonstra a evolução de um aplicativo Android focado na navegação dinâmica entre múltiplas telas utilizando **Jetpack Compose Navigation**. O desenvolvimento foi feito de forma incremental, com foco na passagem de parâmetros obrigatórios e opcionais, conforme os requisitos da avaliação FIAP.
 
----
-
-## 🗂️ Estrutura e Objetivos
-
-- **Projeto evolutivo:** Cada commit mostra um estágio de crescimento do app, adicionando recursos e refinando a navegação.
-- **Objetivo da prova:** Demonstrar domínio da navegação, passagem de dados entre telas, uso de parâmetros obrigatórios e opcionais e registro claro do raciocínio técnico.
 ---
 
 ## 📜 Descrição do Projeto
 
-O app simula um fluxo simples de telas (ScreenA → ScreenB → ScreenC) passando informações entre elas. Navegação, parâmetros obrigatórios/opcionais e organização do código servem para reforçar o entendimento de boas práticas com Jetpack Compose Navigation.
+O aplicativo simula um fluxo de navegação partindo de um menu principal (`MenuScreen`) para telas de detalhes (`PerfilScreen` e `PedidosScreen`). O projeto evoluiu a partir de uma base técnica pré-existente para implementar o roteamento dinâmico e a transferência de dados seguros entre os componentes composables.
 
 ---
 
-## 🎯 Objetivo
+## 🎯 Objetivo da Prova
 
-- Praticar a evolução e organização incremental de um projeto Android.
-- Demonstrar domínio das rotas e do manejo de parâmetros durante a navegação entre telas.
-- Registrar, através dos commits, a lógica de cada etapa da implementação.
+O objetivo principal deste projeto é demonstrar a capacidade de evoluir um software já iniciado, aplicando na prática os conceitos de navegação entre telas no Android. O foco técnico está no domínio da passagem de parâmetros (obrigatórios, opcionais e múltiplos) configurando corretamente o `NavHost` e as rotas.
 
 ---
 
-## 📝 Explicação Evolutiva de Cada Commit
+## 📝 Explicação de Cada Evolução Implementada (Histórico de Commits)
 
-### 1️⃣ [Criando telas e navegação inicial](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/9568c4c797d8a63fbaf7b5f07d410ce3fcea3f06)
-- **Descrição:** Adicionadas três telas básicas (A, B e C) ao projeto, configurando o NavHost e rotas iniciais.
-- **Importância:** Base para navegação; sem este passo, não é possível simular o fluxo de telas.
+Abaixo está o detalhamento de cada etapa da implementação, explicando o que foi feito, como a navegação foi configurada e como os parâmetros são enviados e recebidos.
 
-### 2️⃣ [Parâmetros obrigatórios na navegação](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/a4e3ba3ff33792580eeb784ac7ee1c5e92e71217)
-- **Descrição:** Implementada passagem de parâmetros obrigatórios da Screen A para a Screen B (ex: nome ou id).
-- **Importância:** Permite contexto entre telas, demonstrando entendimento do uso de argumentos na navegação.
+### 1️⃣ [Passagem de parâmetros obrigatórios na tela de Perfil](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/000bb891cd9a2a580ed4d86bd4ac4b889680d27f)
+- **O que foi implementado:** Configuração para enviar o nome do usuário para a tela de perfil de forma obrigatória.
+- **Configuração da Navegação:** No `MainActivity.kt`, a rota da `PerfilScreen` foi alterada de `"perfil"` para `"perfil/{nome}"`, definindo que a tela espera um argumento obrigatório. 
+- **Envio e Recebimento:** No `MenuScreen`, o botão foi configurado para disparar `navController.navigate("perfil/Matheus Rocha Sousa")`. Na recepção, o `it.arguments?.getString("Nome")` extrai o valor na declaração do `composable`, repassando-o para a `PerfilScreen`, que foi atualizada para exibir `"PERFIL - $nome"` na UI.
 
-### 3️⃣ [Parâmetros opcionais e múltiplos parâmetros](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/71715820b3b79202765f4ddad9e25bd0683fe7ac)
-- **Descrição:** Adição de parâmetros opcionais/múltiplos na navegação da Screen B para a Screen C, utilizando defaults e safe args.
-- **Importância:** Demonstra domínio de navegação flexível, essencial em apps reais.
+### 2️⃣ [Passagem de parâmetros opcionais na tela de Pedidos](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/71715820b3b79202765f4ddad9e25bd0683fe7ac)
+- **O que foi implementado:** Preparação da tela de Pedidos para receber um parâmetro opcional chamado `cliente`.
+- **Configuração da Navegação:** A rota da `PedidosScreen` foi ajustada usando a sintaxe de query string: `"pedidos?cliente={cliente}"`. Foi utilizada a função `navArgument` para definir um `defaultValue = "Cliente Genérico"`, garantindo que o app não quebre se nenhum valor for passado.
+- **Envio e Recebimento:** A assinatura da função `PedidosScreen` foi modificada para aceitar `nome: String?`, permitindo que a interface mostre o nome do cliente apenas quando ele estiver disponível, atualizando o texto para `"PEDIDOS - $nome"`.
 
-### 4️⃣ [Refino, organização e documentação final](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/000bb891cd9a2a580ed4d86bd4ac4b889680d27f)
-- **Descrição:** Refatoração para melhor organização, atualização do README e documentação (`checkpoint1.md`) explicando cada passo da implementação.
-- **Importância:** Deixa o projeto claro para correção e futuras manutenções, atingindo os critérios de clareza e qualidade do repositório.
+### 3️⃣ [Inserção de valor em parâmetro opcional](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/a4e3ba3ff33792580eeb784ac7ee1c5e92e71217)
+- **O que foi implementado:** O envio efetivo de um dado preenchendo o parâmetro opcional criado no passo anterior.
+- **Como foi configurado:** No `MenuScreen`, o evento `onClick` do botão que leva aos pedidos foi atualizado. Em vez de chamar apenas a rota base, ele agora envia ativamente o parâmetro na URI utilizando `navController.navigate("pedidos?cliente=Cliente XPTO")`. Com isso, a tela de pedidos passa a exibir "Cliente XPTO" em vez do valor default.
+
+### 4️⃣ [Passagem de múltiplos parâmetros entre telas](https://github.com/mrsMatheusRocha/navigation-between-screens/commit/9568c4c797d8a63fbaf7b5f07d410ce3fcea3f06)
+- **O que foi implementado:** A rota de Perfil foi expandida para receber dois parâmetros obrigatórios simultaneamente: Nome e Idade.
+- **Configuração da Navegação:** A rota no `NavHost` foi alterada para `"perfil/{nome}/{idade}"`. Foi necessário declarar explicitamente a lista de `arguments` no `composable`, definindo que `"nome"` é do tipo `StringType` e `"idade"` é do tipo `IntType`. 
+- **Envio e Recebimento:** O clique no `MenuScreen` foi atualizado para concatenar ambos os dados na rota: `navController.navigate("perfil/Matheus Rocha Sousa/27")`. No recebimento, a idade é extraída com `it.arguments?.getInt("idade")` e repassada para a `PerfilScreen`, que foi adaptada para processar múltiplos argumentos de entrada.
 
 ---
 
 ## 📂 Referências
 
 - [Documentação oficial Jetpack Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
-- [Repositório FIAP de referência]
-
----
-
-## 🚩 Conclusão
-
-O projeto evidencia domínio sobre navegação incremental entre telas com passagem de dados obrigatórios e opcionais, organização do código e explicações detalhadas, como solicitado pela avaliação FIAP.
-
-
+- Repositório FIAP de referência: [android--navigation-between-screens-app](https://github.com/carreiras/android--navigation-between-screens-app)

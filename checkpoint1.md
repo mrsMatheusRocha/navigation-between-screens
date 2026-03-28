@@ -40,8 +40,3 @@ Abaixo está o detalhamento de cada etapa da implementação, explicando o que f
 - **Envio e Recebimento:** O clique no `MenuScreen` foi atualizado para concatenar ambos os dados na rota: `navController.navigate("perfil/Matheus Rocha Sousa/27")`. No recebimento, a idade é extraída com `it.arguments?.getInt("idade")` e repassada para a `PerfilScreen`, que foi adaptada para processar múltiplos argumentos de entrada.
 
 ---
-
-## 📂 Referências
-
-- [Documentação oficial Jetpack Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
-- Repositório FIAP de referência: [android--navigation-between-screens-app](https://github.com/carreiras/android--navigation-between-screens-app)

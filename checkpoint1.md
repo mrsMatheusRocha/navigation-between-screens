@@ -45,24 +45,6 @@ O app simula um fluxo simples de telas (ScreenA → ScreenB → ScreenC) passand
 
 ---
 
-## 🧭 Como Executar
-
-1. Clone este repositório
-2. Abra no Android Studio
-3. Execute em um emulador ou dispositivo físico
-
----
-
-## 👀 Critérios Atendidos
-
-- [x] Evolução do projeto construída sobre a base anterior
-- [x] Parâmetros obrigatórios e opcionais implementados
-- [x] Múltiplos parâmetros corretamente utilizados
-- [x] Histórico de commits reflete etapas e lógica do desenvolvimento
-- [x] Documentação clara, estruturada e coerente
-
----
-
 ## 📂 Referências
 
 - [Documentação oficial Jetpack Navigation Compose](https://developer.android.com/jetpack/compose/navigation)
@@ -74,10 +56,4 @@ O app simula um fluxo simples de telas (ScreenA → ScreenB → ScreenC) passand
 
 O projeto evidencia domínio sobre navegação incremental entre telas com passagem de dados obrigatórios e opcionais, organização do código e explicações detalhadas, como solicitado pela avaliação FIAP.
 
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/mrsMatheusRocha/navigation-between-screens/main/path/to/screenshot1.png" width="300"/>
-<img src="https://raw.githubusercontent.com/mrsMatheusRocha/navigation-between-screens/main/path/to/screenshot2.png" width="300"/>
-
-</div>
 
